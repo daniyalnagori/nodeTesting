@@ -7,7 +7,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient({
   region: "us-east-1",
 
   accessKeyId: "AKIAJZQSSMCC5MEWMP6Q",
-  secretAccessKey: "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"
+  AWS_SECURITY_TOKEN: "aYN3HEHTmyAc8kCQFNXcJ86nvKatrTl+HCQddNPy"
 });
 
 // Insert Data into DynanmoDB table(QuadrigaCX) every 20 Sec
