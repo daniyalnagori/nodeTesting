@@ -1,0 +1,54 @@
+{
+  "name": "server",
+  "region": "us-east-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.15.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.82.0",
+    "bluebird": "^3.5.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "uuid": "^3.1.0"
+  },
+  "resources": {
+    "Resources": {
+      "Blogs": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "TradingData",
+          "iamRoleStatements": [{
+            "Effect": "Allow",
+            "Action": [
+              "dynamodb:Query",
+              "dynamodb:Scan",
+              "dynamodb:GetItem",
+              "dynamodb:PutItem"
+            ],
+            "Resource": "*"
+          }],
+          "AttributeDefinitions": [{
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }],
+          "KeySchema": [{
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": 1,
+            "WriteCapacityUnits": 1
+          }
+        }
+      }
+    }
+  }
+}
